@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predição da Probabilidade de Abstenção do Candidato no Enem</title>
+    <style>
+        /* Same styling as the prediction page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #0C8040;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styles for the "Predict" button */
+        .predict-button {
+            background-color: #DB0527;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .predict-button:hover {
+            background-color: #F79747;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Enem</h1>
+        <p>Predição da Probabilidade de Abstenção do Candidato</p>
+    </header>
+    <div class="container">
+        <h2>Bem vindo(a) ao app de predição de probabilidade de abstenção no enem</h2>
+        <p>Prever a probabilidade de abstenção de um candidato</p>
+        <button class="predict-button" onclick="window.location.href='/predictdata'">Prever</button>
+    </div>
+</body>
+</html>

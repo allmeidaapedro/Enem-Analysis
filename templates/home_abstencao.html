@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predição da Probabilidade de Abstenção do Candidato no Enem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: #0C8040;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            flex-grow: 1;
+        }
+
+        .prediction-container {
+            flex-grow: 1;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 2rem;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background-color: #DB0527;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #F79747;
+        }
+
+        #prediction-result {
+            text-align: center;
+            font-size: 40px; 
+            color: #231F20; 
+            margin-top: 3rem; 
+            padding: 2rem 0;
+        }
+
+        .prediction-value {
+            font-weight: bold;
+            color: #414040;
+            margin-left: 5px; 
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('enem-form');
+            const predictionResult = document.getElementById('prediction-result');
+
+            form.addEventListener('submit', async function(event) {
+                event.preventDefault(); 
+
+                const formData = new FormData(form);
+
+                const response = await fetch('/predictdata', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.text();
+                predictionResult.innerHTML = result;
+
+                
+                form.reset();
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Predição de probabilidade de abstenção no enem</h1>
+        <p>Preveja a probabilidade de abstenção do candidato</p>
+    </header>
+    <div class="container">
+        <h2>Dados do Candidato</h2>
+        <form id="enem-form">
+            <label for="faixa_etaria">Faixa Etária:</label>
+            <select id="faixa_etaria" name="faixa_etaria" required>
+                <option value="" disabled selected>Selecionar faixa etária</option>
+                <option value="Adolescente (< 18)">Adolescente (< 18)</option>
+                <option value="Jovem adulto (18-24)">Jovem adulto (18-24)</option>
+                <option value="Adulto jovem (25-35)">Adulto jovem (25-35)</option>
+                <option value="Adulto de meia idade (36-45)">Adulto de meia idade (36-45)</option>
+                <option value="Meia idade (46-55)">Meia idade (46-55)</option>
+                <option value="Pré aposentadoria (56-65)">Pré aposentadoria (56-65)</option>
+                <option value="Idoso (> 66)">Idoso (> 66)</option>
+            </select>
+
+            <label for="sexo">Sexo:</label>
+            <select id="sexo" name="sexo" required>
+                <option value="" disabled selected>Selecionar sexo</option>
+                <option value="F">F</option>
+                <option value="M">M</option>
+            </select>
+            
+            <label for="status_conclusao_ensino_medio">Status de conclusão do ensino médio:</label>
+            <select id="status_conclusao_ensino_medio" name="status_conclusao_ensino_medio" required>
+                <option value="" disabled selected>Selecionar status</option>
+                <option value="Não concluído">Não concluído</option>
+                <option value="Cursando">Cursando</option>
+                <option value="Último ano">Último ano</option>
+                <option value="Concluído">Concluído</option>
+            </select>
+
+            <label for="escola">Escola:</label>
+            <select id="escola" name="escola" required>
+                <option value="" disabled selected>Selecionar escola</option>
+                <option value="Não respondeu">Não respondeu</option>
+                <option value="Pública">Pública</option>
+                <option value="Privada">Privada</option>
+            </select>
+
+            <label for="treineiro">Treineiro:</label>
+            <select id="treineiro" name="treineiro" required>
+                <option value="" disabled selected>Selecionar opção</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+
+            <label for="lingua">Língua estrangeira escolhida:</label>
+            <select id="lingua" name="lingua" required>
+                <option value="" disabled selected>Selecionar língua</option>
+                <option value="Inglês">Inglês</option>
+                <option value="Espanhol">Espanhol</option>
+            </select>
+            
+            <label for="escolaridade_pai">Escolaridade do pai:</label>
+            <select id="escolaridade_pai" name="escolaridade_pai" required>
+                <option value="" disabled selected>Selecionar escolaridade</option>
+                <option value="Não sei">Não sei</option>
+                <option value="Nunca estudou">Nunca estudou</option>
+                <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
+                <option value="Ensino fundamental completo">Ensino fundamental completo</option>
+                <option value="Ensino médio completo">Ensino médio completo</option>
+                <option value="Ensino superior completo">Ensino superior completo</option>
+                <option value="Pós-graduação">Pós-graduação</option>
+            </select>
+
+            <label for="escolaridade_mae">Escolaridade da mãe:</label>
+            <select id="escolaridade_mae" name="escolaridade_mae" required>
+                <option value="" disabled selected>Selecionar escolaridade</option>
+                <option value="Não sei">Não sei</option>
+                <option value="Nunca estudou">Nunca estudou</option>
+                <option value="Ensino fundamental incompleto">Ensino fundamental incompleto</option>
+                <option value="Ensino fundamental completo">Ensino fundamental completo</option>
+                <option value="Ensino médio completo">Ensino médio completo</option>
+                <option value="Ensino superior completo">Ensino superior completo</option>
+                <option value="Pós-graduação">Pós-graduação</option>
+            </select>
+
+            <label for="numero_pessoas_em_casa">Número de pessoas em casa:</label>
+            <select id="numero_pessoas_em_casa" name="numero_pessoas_em_casa" required>
+                <option value="" disabled selected>Selecionar número</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+            </select>
+            
+            <label for="renda_familiar_mensal">Renda familiar mensal:</label>
+            <select id="renda_familiar_mensal" name="renda_familiar_mensal" required>
+                <option value="" disabled selected>Selecionar renda</option>
+                <option value="Nenhuma Renda">Nenhuma Renda</option>
+                <option value="Até R$ 1.212,00">Até R$ 1.212,00</option>
+                <option value="R$ 1.212,01 - R$ 1.818,00">R$ 1.212,01 - R$ 1.818,00</option>
+                <option value="R$ 1.818,01 - R$ 3.030,00">R$ 1.818,01 - R$ 3.030,00</option>
+                <option value="R$ 3.030,01 - R$ 4.848,00">R$ 3.030,01 - R$ 4.848,00</option>
+                <option value="R$ 4.848,01 - R$ 7.272,00">R$ 4.848,01 - R$ 7.272,00</option>
+                <option value="R$ 7.272,01 - R$ 10.908,00">R$ 7.272,01 - R$ 10.908,00</option>
+                <option value="R$ 10.908,01 - R$ 18.180,0">R$ 10.908,01 - R$ 18.180,0</option>
+                <option value="R$ 18.180,01 - R$ 24.240,00">R$ 18.180,01 - R$ 24.240,00</option>
+                <option value="Acima de R$ 24.240,00">Acima de R$ 24.240,00</option>
+            </select>
+
+            <label for="possui_celular_em_casa">Possui celular em casa:</label>
+            <select id="possui_celular_em_casa" name="possui_celular_em_casa" required>
+                <option value="" disabled selected>Selecionar opção</option>
+                <option value="Não">Não</option>
+                <option value="Um">Um</option>
+                <option value="Dois ou mais">Dois ou mais</option>
+            </select>
+
+            <label for="possui_computador_em_casa">Possui computador em casa:</label>
+            <select id="possui_computador_em_casa" name="possui_computador_em_casa" required>
+                <option value="" disabled selected>Selecionar opção</option>
+                <option value="Não">Não</option>
+                <option value="Um">Um</option>
+                <option value="Dois ou mais">Dois ou mais</option>
+            </select>
+
+            <label for="acesso_internet_em_casa">Acesso a internet em casa:</label>
+            <select id="acesso_internet_em_casa" name="acesso_internet_em_casa" required>
+                <option value="" disabled selected>Selecionar opção</option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+            
+            <label for="uf_prova">Estado de aplicação da prova:</label>
+            <select id="uf_prova" name="uf_prova" required>
+                <option value="" disabled selected>Selecionar estado</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MG">MG</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="PR">PR</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="SP">SP</option>
+                <option value="TO">TO</option>
+            </select>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <div class="prediction-container">
+        <h2 id="prediction-result">
+            Prever probabilidade de abstenção do candidato <span class="prediction-value">{{ prediction }}</span>
+        </h2>
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="predict-button" onclick="window.location.href='/'">Página Inicial</button>
+        </div>
+    </div>
+</body>
+</html>

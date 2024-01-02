@@ -607,3 +607,4 @@ def plot_scores_percentages(y_true, probas):
         plt.show()
     except Exception as e:
         raise CustomException(e, sys)
+    
