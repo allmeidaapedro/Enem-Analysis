@@ -74,7 +74,7 @@ class PredictPipeline:
 
             logging.info('Cleaning the input data.')
 
-            clean_input_data = data_cleaning(features, abstencao=True, input=True)
+            clean_input_data = data_cleaning(features, absence=True, raw_data=False)
 
             logging.info('Preprocessing the input data.')
 

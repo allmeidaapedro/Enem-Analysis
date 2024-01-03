@@ -1,2 +1,4 @@
-artifacts/data.csv filter=lfs diff=lfs merge=lfs -text
-artifacts/train.csv filter=lfs diff=lfs merge=lfs -text
+artifacts/data_abstencao.csv filter=lfs diff=lfs merge=lfs -text
+artifacts/data_desempenho.csv filter=lfs diff=lfs merge=lfs -text
+artifacts/train_abstencao.csv filter=lfs diff=lfs merge=lfs -text
+artifacts/train_desempenho.csv filter=lfs diff=lfs merge=lfs -text

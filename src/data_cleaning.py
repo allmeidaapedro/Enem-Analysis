@@ -20,13 +20,14 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-def data_cleaning(df, abstencao=False, input=False):
+def data_cleaning(df, absence=False, raw_data=True):
     '''
     Perform data cleaning and feature engineering on a DataFrame for performance and abstencao modelling tasks.
 
     Parameters:
     - df (pd.DataFrame): The input DataFrame containing the raw data.
-    - input (bool): Wheter we should clean just input features. Default is False.
+    - absence (bool): Whether we should apply data cleaning for absence modelling or performance modelling. Default is False.
+    - raw_data (bool): Whether we should clean the raw data (for split process) or the input features (for prediction). Default is True.
 
     Returns:
     pd.DataFrame: A cleaned and feature-engineered DataFrame.
@@ -132,43 +133,53 @@ def data_cleaning(df, abstencao=False, input=False):
             'Acima de R$ 24.240,00': 'Renda alta'
         })
 
-        if abstencao:
+        if absence:
             # Combining similar low proportion age categories.
             clean_df['faixa_etaria'] = clean_df['faixa_etaria'].replace(to_replace={'Adulto jovem (25-35)': 'Adulto (25-45)', 
                                                                         'Adulto de meia idade (36-45)': 'Adulto (25-45)',
                                                                         'Meia idade (46-55)': 'Meia idade a idoso (46+)',
                                                                         'Pré aposentadoria (56-65)': 'Meia idade a idoso (46+)',
                                                                         'Idoso (> 66)': 'Meia idade a idoso (46+)'})
-        else:
-            # Combining similar low proportion age categories.
-            clean_df['faixa_etaria'] = clean_df['faixa_etaria'].replace(to_replace={'Adulto de meia idade (36-45)': 'Adulto a meia idade (36-55)', 'Meia idade (46-55)': 'Adulto a meia idade (36-55)', 'Pré aposentadoria (56-65)': 'Pré aposentadoria a idoso (> 56)', 'Idoso (> 66)': 'Pré aposentadoria a idoso (> 56)'})
-
-        if not input:
-            if abstencao:
+            if raw_data:
                 # Creating our target, a feature indicating wheter the student was absent in at least one day of the exam (1).
                 clean_df['abstencao'] = (clean_df['presenca_lc'] == 'Ausente') | \
                                     (clean_df['presenca_ch'] == 'Ausente') | \
                                     (clean_df['presenca_cn'] == 'Ausente') | \
                                     (clean_df['presenca_mt'] == 'Ausente') 
                 clean_df['abstencao'] = clean_df['abstencao'].astype('int8')
-            else:
+
+                # Dropping irrelevant variables or variables which would lead to data leakage.
+                to_drop = ['municipio_prova', 'presenca_cn', 'presenca_ch', 'presenca_lc', 
+                'presenca_mt', 'nota_cn', 'nota_ch', 'nota_lc', 
+                'nota_mt', 'nota_comp1', 'nota_comp2', 'nota_comp3', 
+                'nota_comp4', 'nota_comp5', 'nota_redacao', 'estado_civil', 
+                'uf_prova', 'renda_numerica']
+
+                clean_df = clean_df.drop(columns=to_drop)
+
+                return clean_df
+        else:
+            # Combining similar low proportion age categories.
+            clean_df['faixa_etaria'] = clean_df['faixa_etaria'].replace(to_replace={'Adulto de meia idade (36-45)': 'Adulto a meia idade (36-55)', 'Meia idade (46-55)': 'Adulto a meia idade (36-55)', 'Pré aposentadoria (56-65)': 'Pré aposentadoria a idoso (> 56)', 'Idoso (> 66)': 'Pré aposentadoria a idoso (> 56)'})
+
+            if raw_data:
                 # Creating a feature indicating the students' average grade (TARGET).
                 clean_df['nota_geral'] = (clean_df['nota_lc'] + clean_df['nota_ch'] + clean_df['nota_cn'] + clean_df['nota_mt'] + clean_df['nota_redacao']) / 5
 
                 # Removing zero grade observations.
                 clean_df = clean_df.loc[~(clean_df['nota_geral'] == 0)]
 
-            # Dropping irrelevant variables or variables which would lead to data leakage.
-            to_drop = ['municipio_prova', 'presenca_cn', 'presenca_ch', 'presenca_lc', 
-            'presenca_mt', 'nota_cn', 'nota_ch', 'nota_lc', 
-            'nota_mt', 'nota_comp1', 'nota_comp2', 'nota_comp3', 
-            'nota_comp4', 'nota_comp5', 'nota_redacao', 'estado_civil', 
-            'uf_prova', 'renda_numerica']
+                # Dropping irrelevant variables or variables which would lead to data leakage.
+                to_drop = ['municipio_prova', 'presenca_cn', 'presenca_ch', 'presenca_lc', 
+                'presenca_mt', 'nota_cn', 'nota_ch', 'nota_lc', 
+                'nota_mt', 'nota_comp1', 'nota_comp2', 'nota_comp3', 
+                'nota_comp4', 'nota_comp5', 'nota_redacao', 'estado_civil', 
+                'uf_prova', 'renda_numerica']
 
-            clean_df = clean_df.drop(columns=to_drop)
+                clean_df = clean_df.drop(columns=to_drop)
 
-            return clean_df
-
+                return clean_df
+        
         to_drop = ['renda_numerica']
         clean_df = clean_df.drop(columns=to_drop)
 

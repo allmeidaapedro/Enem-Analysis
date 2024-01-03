@@ -91,7 +91,7 @@ class DataIngestion:
         try:
             logging.info('Reading the dataset as a Pandas DataFrame and saving it as a csv.')
 
-            path = os.path.abspath('D:/MLProjects/DadosENEM/clean_df.parquet')
+            path = 'D:\\MLProjects\\EnemAnalysis\\input\data\\clean_df.parquet'
             df = pd.read_parquet(path)
 
             # Data that is being used for performance modelling consists only of the candidates who were present in both days of the exam.
@@ -105,7 +105,7 @@ class DataIngestion:
 
             logging.info('Cleaning the data.')
             
-            clean_df = data_cleaning(df, abstencao=False, input=False)
+            clean_df = data_cleaning(df, absence=False, raw_data=True)
 
             logging.info('Obtaining X and y.')
 

@@ -94,7 +94,7 @@ class DataIngestion:
         try:
             logging.info('Reading the dataset as a Pandas DataFrame and saving it as a csv.')
 
-            path = os.path.abspath('D:/MLProjects/DadosENEM/clean_df.parquet')
+            path = 'D:\\MLProjects\\EnemAnalysis\\input\data\\clean_df.parquet'
             df = pd.read_parquet(path)
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path), exist_ok=True)
@@ -102,7 +102,7 @@ class DataIngestion:
 
             logging.info('Cleaning the data.')
             
-            clean_df = data_cleaning(df, abstencao=True, input=False)
+            clean_df = data_cleaning(df, absence=True, raw_data=True)
 
             logging.info('Obtaining X and y.')
 

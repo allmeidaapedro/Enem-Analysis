@@ -1,3 +1,1 @@
-# Microdados do Enem
-- Em virtude do tamanho dos dados sendo utilizados, não é possível armazená-los no diretório e repositório GitHub.
-- Os dados podem ser encontrados em: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados/enem
+O arquivo original contendo os microdados do enem, MICRODADOS_ENEM_2022.csv não será incluído aqui pois representa mais de 3 GB, impossibilitando o manuseio adequado do repositório remoto no github. Apenas o arquivo resultante da limpeza inicial de dados será incluído. Este, será considerado o 'raw data' na tarefa de deploy.
