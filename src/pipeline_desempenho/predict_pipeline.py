@@ -79,11 +79,14 @@ class PredictPipeline:
             logging.info('Preprocessing the input data.')
 
             # Imputing 'Não sei' (null value) category with train mode for escolaridade_pai and escolaridade_mae. The mode is 'Ensino médio completo'.
-            train_path = os.path.join('artifacts', 'train_desempenho.csv')
-            train = pd.read_csv(train_path)
+            # train_path = os.path.join('artifacts', 'train_desempenho.csv')
+            # train = pd.read_csv(train_path)
 
-            esc_mae_mode = train['escolaridade_mae'].mode()[0]
-            esc_pai_mode = train['escolaridade_pai'].mode()[0]
+            # esc_mae_mode = train['escolaridade_mae'].mode()[0]
+            # esc_pai_mode = train['escolaridade_pai'].mode()[0]
+            
+            esc_mae_mode = 'Ensino médio completo'
+            esc_pai_mode = 'Ensino médio completo'
 
             if (clean_input_data['escolaridade_mae'] == 'Não sei').any():
                 clean_input_data['escolaridade_mae'] = clean_input_data['escolaridade_mae'].replace(to_replace={'Não sei': esc_mae_mode})
