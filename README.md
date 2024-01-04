@@ -15,9 +15,10 @@
     - A partir do conhecimento dos fatores que mais influenciam a abstenção do candidato e das probabilidades de ausência preditas, determinar intervenções preventivas, aprimoramento da comunicação e planejamento estratégico de forma a mitigar essa alta taxa de abstenção em pontos de foco e, consequentemente, melhorar a qualidade do exame e da educação do país.
     - A partir do conhecimento dos fatores que mais impactam a nota do candidato e dos valores preditos para ela, identificar talentos potenciais (perfis de alunos que tendem a performar excepcionalmente no enem) e necessidades individuais (perfis de alunos que tendem a performar mal no enem), avaliar o desempenho educacional e realizar um planejamento estratégico para assistir àqueles menos capacitados. Consequentemente, isso melhoraria a qualidade do exame e da educação do país.
 - Finalmente, foram desenvolvidas duas APIs Flask para deploy do modelo de ambas as análises supracitadas. Dessa forma, é possível prever a nota ou a probabilidade de abstenção de um candidato fornecendo dados socioeconômicos e educacionais sobre ele.
+- [Clique aqui para acessar o notebook da modelagem de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/4_modelling_abstencao.ipynb)
 - Cada análise e modelagem realizada é abordada com mais detalhes nos próximos tópicos.
 
-# 2. Limpeza de dados
+# [**2. Limpeza de dados**](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/1_data_cleaning.ipynb)
 - A limpeza foi fundamental, dado que o conjunto original dos microdados tem mais de 2 GB de tamanho, tornando a manipulação, análise e modelagem dos dados inviável. Nessa etapa, foram realizadas as seguintes tarefas:
     - Identificação e tratamento de valores nulos e duplicados, de acordo com os objetivos da análise.
     - Remoção de variáveis irrelevantes para a análise.
@@ -25,6 +26,7 @@
     - Otimização de memória: Conversão de variáveis a tipos de dados menores, a fim de melhorar a performance, possibilitando a leitura e manipulação dos dados em menor tempo, sem que haja a perda de informação. Colunas 'object' foram convertidas a 'category', colunas 'float64' foram convertidas a 'float32' e colunas 'int64' foram convertidas a 'int8'.
     - Tudo foi salvo em um arquivo parquet, de forma a agilizar a leitura e manter os tipos convertidos do tópico acima.
 - Como resultado da limpeza, foi possível reduzir o tamanho do dataset de +2 GB para +221.7 MB, quase 10%!
+- [Clique aqui para acessar a limpeza de dados](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/1_data_cleaning.ipynb)
 
 ![1704334397886](image/README/1704334397886.png)
 
@@ -38,6 +40,7 @@
     - Como a renda influencia o desempenho do candidato?
     - Como a escolaridade do pai e da mãe influenciam o desempenho do candidato?
     - De que forma a falta de acesso a internet e/ou computador em casa impactam o desempenho do candidato?
+- [Clique aqui para acessar as análises](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
 # 3.1 Principais insights - Análise de desempenho
 - A nota média geral no enem de 2022 é aproximadamente 543. 
@@ -74,6 +77,7 @@
     - Existe alguma diferença na taxa de abstenção entre as diferentes faixas etárias?
     - Existe alguma diferença na taxa de abstenção entre pessoas do sexo masculino e do sexo feminino?
     - Quais regiões apresentam as maiores e as menores taxas de abstenção?
+- [Clique aqui para acessar as análises](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
 # 4.1 Principais insights - Análise de abstenção
 - Ambos os dias de prova apresentam altas taxas de abstenção. Para o primeiro dia (provas de linguagens e ciências humanas) temos uma taxa de aproximadamente 28%, contra 32% para o segundo dia (ciências da natureza e matemática). Isso é preocupante, principalmente porque a enorme maioria dessas ausências não se devem a razões randômicas, mas sim por falta de preparo/confiança do candidato para realizar a prova. O governo deve trabalhar para mitigar essa problemática.
@@ -103,6 +107,8 @@
     - Com um MAE de aproximadamente 57, as previsões do modelo são desviadas, em média, de 57 pontos em relação às notas reais dos candidatos no enem. 
     - Com um R2 de 0.31, aproximadamente 31% da variância do target é explicada pelo modelo / variáveis independentes.
     - Os erros nas amostras de treino, teste e validação são similares, indicando que o modelo não está com overfitting e generaliza de forma satisfatória para instâncias nunca antes vistas.
+- [Clique aqui para acessar a modelagem de desempenho](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/3_modelling_desempenho.ipynb)
+
 
 | Model   | MAE     | MAPE    | RMSE    | R2     |
 |---------|---------|---------|---------|--------|
@@ -149,6 +155,7 @@
     - Obtivemos um Recall 0.68, de modo que o modelo identifica corretamente 68% dos ausentes.
     - O modelo apresenta ordenação nos escores, com faixas de probabilidade mais altas contendo mais ausentes.
     - Os scores nas amostras de treino, teste e validação são similares, indicando que o modelo não está com overfitting e generaliza de forma satisfatória para instâncias nunca antes vistas.
+- [Clique aqui para acessar o notebook da modelagem de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/4_modelling_abstencao.ipynb)
 
 <img src="reports/roc.png">
 
