@@ -26,7 +26,9 @@
     - Tudo foi salvo em um arquivo parquet, de forma a agilizar a leitura e manter os tipos convertidos do tópico acima.
 - Como resultado da limpeza, foi possível reduzir o tamanho do dataset de +2 GB para +221.7 MB, quase 10%!
 
+<p align="center">
 ![1704334397886](image/README/1704334397886.png)
+</p>
 
 # 3. Análise de desempenho
 - O objetivo dessa análise consiste em identificar as principais variáveis que impactam a nota do candidato, como elas se relacionam com o desempenho dele e como podem ser utilizadas para a predição dessa nota.
@@ -44,7 +46,9 @@
 - A nota média máxima no ENEM de 2022 é aproximadamente 856.
 - Ciências da natureza é a área do conhecimento com o pior desempenho. A nota média é aproximadamente 496. Além disso, analisando os percentis, metade dos candidatos obtém uma nota de até 486 nessa prova. Esse resultado é bem baixo, principalmente se comparado com a área do conhecimento com o melhor desempenho, matemática. A nota média nela é aproximadamente 543. Uma observação importante é que esse indicador em matemática pode enganar. Apesar de ter a maior nota média, isso se deve ao modelo do enem, que naturalmente atribui mais pontos para essa prova.
 
+<p align="center">
 <img src="reports/dist_notas_obj.png">
+</p>
 
 - Surpreendentemente, 42.16% dos candidatos não possuem computador em casa. Esse dado nos revela uma dificuldade e disparidade de condições dos estudantes, já que um computador com acesso a internet é a melhor ferramenta para estudos atualmente.
 - 91.96% dos candidatos possuem acesso a internet em casa. Embora seja um baixo percentual, ainda é alarmante o fato de que aproximadamente 8% dos estudantes não possuem sequer internet para se preparar. Considerando um exame desse porte, isso representa um grande número de pessoas.
@@ -105,10 +109,11 @@
     - Os erros nas amostras de treino, teste e validação são similares, indicando que o modelo não está com overfitting e generaliza de forma satisfatória para instâncias nunca antes vistas.
 
 
+<p align="center">
 | Model   | MAE     | MAPE    | RMSE    | R2     |
 |---------|---------|---------|---------|--------|
 | Lasso   | 57.1358 | 11.1016 | 72.7676 | 0.3142 |
-
+</p>
 
 <img src="reports/actual_predicted.png">
 
@@ -124,6 +129,7 @@
     - A variável escola_publica apresenta uma correlação negativa com a nota. Uma vez que esta representa uma variável dummy, indicando 1 caso o candidato seja aluno de escola pública, ou 0, caso não. A interpretação pode ser feita da seguinte forma:
         - Caso o estudante seja aluno de escola pública, a sua nota reduz em 10.2 pontos, considerando todas as outras variáveis constantes.
 
+<p align="center">
 | Variável                        | Coeficiente  | Correlação  |
 |---------------------------------|--------------|-------------|
 | Intercepto                      | 531.943158   | Positiva    |
@@ -134,6 +140,7 @@
 | possui_computador_em_casa       | 9.445293     | Positiva    |
 | escola_privada                  | 8.927823     | Positiva    |
 | escolaridade_mae                | 8.176244     | Positiva    |
+</p>
 
 # 6. Modelagem de abstenção
 - Para a predição da probabilidade de abstenção foi utilizado um modelo de Regressão Logística, dado o seu rápido treinamento e predição, alta interpretabilidade através da exponencial dos coeficientes (razão de chances), regularização utilizando a penalidade l1 e maior proximidade das probabilidades estimadas pelo modelo em relação às probabilidades reais calibradas.
@@ -171,6 +178,7 @@
         - Caso o candidato não tenha respondido em que tipo de escola estuda/estudou, as chances de abstenção aumentam em 85%, considerando as outras variáveis constantes.
         - Para cada aumento de uma unidade na faixa_etaria (ou seja, de adolescente para jovem adulto, de adulto para meia idade a idoso, por exemplo), as chances de abstenção aumentam em 35%, considerando as outras variáveis constantes.
 
+<p align="center">
 | Variável               | Coeficiente  | Correlação  | Exponencial  |
 |------------------------|--------------|-------------|--------------|
 | escola_privada         | -1.052792    | Negativa    | 0.348962     |
@@ -180,6 +188,7 @@
 | faixa_etaria           | 0.297036     | Positiva    | 1.345864     |
 | escola_publica         | 0.185337     | Positiva    | 1.203624     |
 | renda_familiar_mensal  | -0.176665    | Negativa    | 0.838061     |
+</p>
 
 # 7. Deploy e próximos passos
 - Após o desenvolvimento dos modelos, foi realizado o deploy de cada um seguindo princípios básicos de CI/CD e programação modular:
