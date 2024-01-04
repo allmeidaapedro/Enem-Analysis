@@ -125,8 +125,11 @@
     - Todas, exceto escola_publica apresentam uma correlação positiva com a nota. A interpretação pode ser realizada da seguinte maneira:
         - O aumento de uma unidade em possui_computador_em_casa, ou seja, de nenhum para um, ou de um para dois ou mais, reflete um aumento de 9.45 na nota geral, considerando todas as outras variáveis constantes.
         - O aumento de uma unidade na renda_familiar_mensal, ou seja, de nenhuma renda para renda baixa, por exemplo, reflete um aumento de mais de 16 pontos na nota geral, considerando todas as outras variáveis constantes.
+        - Caso o aluno estude/tenha estudado em escola privada, a sua nota aumenta em 9 pontos, considerando todas as outras variáveis constantes.
+        - O aumento de uma unidade na escolaridade_mae, ou seja, de ensino médio completo para ensino superior, por exemplo, reflete um aumento de mais de 8 pontos na nota geral, considerando todas as outras variáveis constantes.
     - A variável escola_publica apresenta uma correlação negativa com a nota. Uma vez que esta representa uma variável dummy, indicando 1 caso o candidato seja aluno de escola pública, ou 0, caso não. A interpretação pode ser feita da seguinte forma:
         - Caso o estudante seja aluno de escola pública, a sua nota reduz em 10.2 pontos, considerando todas as outras variáveis constantes.
+    - Para o resto das variáveis, a interpretação segue a mesma lógica.
 
 | Variável                        | Coeficiente  | Correlação  |
 |---------------------------------|--------------|-------------|
@@ -175,7 +178,8 @@
     - As variáveis faixa_etaria e nao_respondeu_escola apresentam uma correlação negativa com o log-odds. A interpretação pode ser feita da seguinte forma:
         - Caso o candidato não tenha respondido em que tipo de escola estuda/estudou, as chances de abstenção aumentam em 85%, considerando as outras variáveis constantes.
         - Para cada aumento de uma unidade na faixa_etaria (ou seja, de adolescente para jovem adulto, de adulto para meia idade a idoso, por exemplo), as chances de abstenção aumentam em 35%, considerando as outras variáveis constantes.
-
+    - Para o resto das variáveis, a interpretação segue a mesma lógica.
+    
 | Variável               | Coeficiente  | Correlação  | Exponencial  |
 |------------------------|--------------|-------------|--------------|
 | escola_privada         | -1.052792    | Negativa    | 0.348962     |
