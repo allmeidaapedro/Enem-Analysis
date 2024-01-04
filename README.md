@@ -9,8 +9,8 @@
 - A solução foi planejada com base no framework CRISP-DM, envolvendo o entendimento do problema, entendimento dos dados, limpeza dos dados, análise dos dados, modelagem e deploy.
 - A limpeza foi fundamental, dado que o conjunto original dos microdados tem mais de 2 GB de tamanho, tornando a manipulação, análise e modelagem dos dados inviável.
 - A análise e modelagem se dividem em duas abordagens:
-    - Análise e modelagem de desempenho: O objetivo dessa análise consiste em identificar as principais variáveis que impactam a nota do candidato, como elas se relacionam com o desempenho dele e como elas podem ser utilizadas para a predição dessa nota.
-    - Análise e modelagem de abstenção: O objetivo dessa análise consiste em identificar os principais fatores que influenciam a ausência do candidato na prova. Além disso, observar como esses fatores se relacionam com a ausência e como eles podem ser utilizados para a predição da probabilidade de abstenção do estudante.
+    - Análise e modelagem de desempenho: O objetivo dessa análise consiste em identificar as principais variáveis que impactam a nota do candidato, como elas se relacionam com o desempenho dele e como elas podem ser utilizadas para a predição dessa nota. Assim, para a tarefa de predição, é utilizado um modelo de Regressão Lasso.
+    - Análise e modelagem de abstenção: O objetivo dessa análise consiste em identificar os principais fatores que influenciam a ausência do candidato na prova. Além disso, observar como esses fatores se relacionam com a ausência e como eles podem ser utilizados para a predição da probabilidade de abstenção do estudante. Desse modo, para a tarefa de predição, é utilizado um modelo de Regressão Logística
 - Tais análises podem servir para interesses educacionais. O governo poderia utilizá-las para, por exemplo:
     - A partir do conhecimento dos fatores que mais influenciam a abstenção do candidato e das probabilidades de ausência preditas, determinar intervenções preventivas, aprimoramento da comunicação e planejamento estratégico de forma a mitigar essa alta taxa de abstenção em pontos de foco e, consequentemente, melhorar a qualidade do exame e da educação do país.
     - A partir do conhecimento dos fatores que mais impactam a nota do candidato e dos valores preditos para ela, identificar talentos potenciais (perfis de alunos que tendem a performar excepcionalmente no enem) e necessidades individuais (perfis de alunos que tendem a performar mal no enem), avaliar o desempenho educacional e realizar um planejamento estratégico para assistir àqueles menos capacitados. Consequentemente, isso melhoraria a qualidade do exame e da educação do país.
@@ -136,7 +136,7 @@
 # 6. Modelagem de abstenção
 - Para a predição da probabilidade de abstenção foi utilizado um modelo de Regressão Logística, dado o seu rápido treinamento e predição, alta interpretabilidade através da exponencial dos coeficientes (razão de chances), regularização utilizando a penalidade l1 e maior proximidade das probabilidades estimadas pelo modelo em relação às probabilidades reais calibradas.
 - Foram consideradas diversas variáveis na construção do modelo. Os insights obtidos na etapa de análise exploratória de dados serviram de guia para tarefas de limpeza e pré-processamento de dados, necessárias para a aplicação de algoritmos de machine learning.
-- A limpeza e pré-processamento de dados efetuados foram praticamente os mesmos que a modelagem de desempenho, exceto na etapa de feature engineering, em que o target criado indicava se o candidato esteve ausente em pelo menos um dos dias do enem e algumas categorias foram fundidas de forma diferente.
+- A limpeza e pré-processamento de dados efetuados foram praticamente os mesmos que a modelagem de desempenho, exceto na etapa de feature engineering, em que o target criado indicava se o candidato esteve ausente em pelo menos um dos dias do enem e algumas categorias que foram fundidas de forma diferente.
 - Da mesma forma, a validação cruzada k-fold para seleção de modelos potenciais e a tunagem de hiperparâmetros com a busca bayesiana foram aplicadas. A Regressão Logística foi escolhida pelos motivos supracitados.
 - Em suma, considerando que trata-se de uma classificação binária desbalanceada (temos aproximadamente 32% de ausentes contra 68% de presentes), as estratégias adotadas para lidar com esse problema foram:
     - Feature engineering para ajudar o modelo a discriminar entre abstenção (1) e presença (0).
@@ -195,9 +195,73 @@
 ![1704338734527](image/README/1704338734527.png)
 
 # 8. Tecnologias utilizadas
-As tecnologias e ferramentas utilizadas foram Python (Pandas, Numpy, Matplotlib, Seaborn, Scikit-Learn, Category-Encoders, Scikit-Optimize, Xgboost, Flask), Jupyter Notebook, Git e Github (controle de versão), algoritmos de regressão e classificação de aprendizado de máquina, estatística, Anaconda (terminal) e Visual Studio Code (ambiente de desenvolvimento do projeto).
+- As tecnologias e ferramentas utilizadas foram Python (Pandas, Numpy, Matplotlib, Seaborn, Scikit-Learn, Optuna, Flask), Jupyter Notebook, Git e Github (controle de versão), algoritmos de machine learning para regressão e classificação, estatística, Anaconda (terminal) e Visual Studio Code (ambiente de desenvolvimento do projeto).
 
-# 9. Execute o projeto na sua máquina local
+# 9. Execute o projeto na sua máquina
+- Pré-requisitos:
 
+- Antes de começar, certifique-se de ter os seguintes itens instalados em sua máquina:
 
+    - Python 3.11.4
+    - pip (gerenciador de pacotes Python)
+    - Git (ferramenta de controle de versão)
 
+- Após instalar esses requisitos, abra um terminal em sua máquina local e execute os seguintes comandos:
+
+1. Clonar o repositório:
+<pre>
+git clone https://github.com/allmeidaapedro/Enem-Analysis.git
+</pre>
+
+2. Navegar até o diretório do repositório clonado:
+<pre>
+cd Enem-Analysis
+</pre>
+
+3. Criar um ambiente virtual:
+<pre>
+python -m venv venv
+</pre>
+
+4. Ativar o Ambiente Virtual:
+- Ative o ambiente virtual usado para isolar as dependências do projeto.
+<pre>
+source venv/bin/activate  # No Windows, use 'venv\Scripts\activate'
+</pre>
+
+5. Instalar Dependências:
+- Use o pip para instalar as dependências necessárias listadas no arquivo requirements.txt.
+<pre>
+pip install -r requirements.txt
+</pre>
+
+6. Executar a Aplicação:
+- Caso queira prever a nota de um candidato, execute:
+<pre>
+python app_desempenho.py
+</pre>
+- Caso queira prever a probabilidade de abstenção de um candidato, execute:
+<pre>
+python app_abstencao.py
+</pre>
+
+7. Acessar o Projeto Localmente:
+- Após executar com sucesso, você pode acessar o projeto localmente. Abra um navegador da web e vá para http://127.0.0.1:5000/
+- Em seguida, vá para a página de predição, selecione os dados socioeconômicos e educacionais do e clique em enviar. A probabilidade de abstenção ou a nota predita aparecerá no lado direito.
+
+8. Desligar a Aplicação:
+- Para parar a aplicação, normalmente você pode pressionar Ctrl+C no terminal onde a aplicação está em execução.
+
+9. Desativar o Ambiente Virtual:
+- Quando terminar com o projeto, desative o ambiente virtual.
+<pre>
+deactivate
+</pre>
+
+# 10. Acesso aos dados
+- Os dados podem ser encontrados em: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados
+
+# 11. Contato
+- Linkedin: https://www.linkedin.com/in/pedro-henrique-almeida-oliveira-77b44b237/
+- Github: https://github.com/allmeidaapedro
+- Gmail: pedrooalmeida.net@gmail.com
