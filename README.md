@@ -15,10 +15,9 @@
     - A partir do conhecimento dos fatores que mais influenciam a abstenção do candidato e das probabilidades de ausência preditas, determinar intervenções preventivas, aprimoramento da comunicação e planejamento estratégico de forma a mitigar essa alta taxa de abstenção em pontos de foco e, consequentemente, melhorar a qualidade do exame e da educação do país.
     - A partir do conhecimento dos fatores que mais impactam a nota do candidato e dos valores preditos para ela, identificar talentos potenciais (perfis de alunos que tendem a performar excepcionalmente no enem) e necessidades individuais (perfis de alunos que tendem a performar mal no enem), avaliar o desempenho educacional e realizar um planejamento estratégico para assistir àqueles menos capacitados. Consequentemente, isso melhoraria a qualidade do exame e da educação do país.
 - Finalmente, foram desenvolvidas duas APIs Flask para deploy do modelo de ambas as análises supracitadas. Dessa forma, é possível prever a nota ou a probabilidade de abstenção de um candidato fornecendo dados socioeconômicos e educacionais sobre ele.
-- [Clique aqui para acessar o notebook da modelagem de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/4_modelling_abstencao.ipynb)
 - Cada análise e modelagem realizada é abordada com mais detalhes nos próximos tópicos.
 
-# [**2. Limpeza de dados**](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/1_data_cleaning.ipynb)
+# 2. Limpeza de dados
 - A limpeza foi fundamental, dado que o conjunto original dos microdados tem mais de 2 GB de tamanho, tornando a manipulação, análise e modelagem dos dados inviável. Nessa etapa, foram realizadas as seguintes tarefas:
     - Identificação e tratamento de valores nulos e duplicados, de acordo com os objetivos da análise.
     - Remoção de variáveis irrelevantes para a análise.
@@ -155,7 +154,7 @@
     - Obtivemos um Recall 0.68, de modo que o modelo identifica corretamente 68% dos ausentes.
     - O modelo apresenta ordenação nos escores, com faixas de probabilidade mais altas contendo mais ausentes.
     - Os scores nas amostras de treino, teste e validação são similares, indicando que o modelo não está com overfitting e generaliza de forma satisfatória para instâncias nunca antes vistas.
-- [Clique aqui para acessar o notebook da modelagem de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/4_modelling_abstencao.ipynb)
+- [Clique aqui para acessar a modelagem de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/4_modelling_abstencao.ipynb)
 
 <img src="reports/roc.png">
 
@@ -201,10 +200,18 @@
 
 ![1704338734527](image/README/1704338734527.png)
 
-# 8. Tecnologias utilizadas
+# 8. Estrutura de pastas do projeto
+- Artifacts: Contém os artefatos do modelo de machine learning (model .pkl, preprocessor .pkl, dados brutos, de treino, teste e validação), após a execução do pipeline de treinamento. 
+- Input: Contém o produto da limpeza de dados, o arquivo clean_df.parquet, utilizado como dado bruto em todos os notebooks e arquivos do projeto.
+- Notebooks: Contém os notebooks de limpeza de dados, análise exploratória de dados (desempenho e abstenção), modelagem de desempenho e modelagem de abstenção.
+- Reports: Contém imagens para documentação.
+- Src: Contém todos os scripts .py, incluindo utils, exceções, logger, componentes de ingestão de dados, transformação de dados e treinamento de modelo, e pipelines de treino e predição para ambas as modelagens.
+- Templates: Contém as páginas de predição de desempenho e predição de probabilidade de abstenção.
+
+# 9. Tecnologias utilizadas
 - As tecnologias e ferramentas utilizadas foram Python (Pandas, Numpy, Matplotlib, Seaborn, Scikit-Learn, Optuna, Flask), Jupyter Notebook, Git e Github (controle de versão), algoritmos de machine learning para regressão e classificação, estatística, Anaconda (terminal) e Visual Studio Code (ambiente de desenvolvimento do projeto).
 
-# 9. Execute o projeto na sua máquina
+# 10. Execute o projeto na sua máquina
 - Pré-requisitos:
 
 - Antes de começar, certifique-se de ter os seguintes itens instalados em sua máquina:
@@ -265,10 +272,10 @@ python app_abstencao.py
 deactivate
 </pre>
 
-# 10. Acesso aos dados
+# 11. Acesso aos dados
 - Os dados podem ser encontrados em: https://www.gov.br/inep/pt-br/acesso-a-informacao/dados-abertos/microdados
 
-# 11. Contato
+# 12. Contato
 - Linkedin: https://www.linkedin.com/in/pedro-henrique-almeida-oliveira-77b44b237/
 - Github: https://github.com/allmeidaapedro
 - Gmail: pedrooalmeida.net@gmail.com
