@@ -6,6 +6,7 @@
 
 # 1. Descrição e objetivos
 - Este é um projeto de ciência de dados de ponta a ponta (da coleta de dados até o deploy) em que é realizada a limpeza, análise exploratória e modelagem dos microdados do enem 2022 (dados públicos reais).
+- A solução foi planejada com base no framework CRISP-DM, envolvendo o entendimento do problema, entendimento dos dados, limpeza dos dados, análise dos dados, modelagem e deploy.
 - A limpeza foi fundamental, dado que o conjunto original dos microdados tem mais de 2 GB de tamanho, tornando a manipulação, análise e modelagem dos dados inviável.
 - A análise e modelagem se dividem em duas abordagens:
     - Análise e modelagem de desempenho: O objetivo dessa análise consiste em identificar as principais variáveis que impactam a nota do candidato, como elas se relacionam com o desempenho dele e como elas podem ser utilizadas para a predição dessa nota.
