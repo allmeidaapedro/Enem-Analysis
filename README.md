@@ -124,6 +124,7 @@
         - Quanto maior a renda familiar mensal e a escolaridade do responsável, maior a nota do candidato.
     - Todas, exceto escola_publica apresentam uma correlação positiva com a nota. A interpretação pode ser realizada da seguinte maneira:
         - O aumento de uma unidade em possui_computador_em_casa, ou seja, de nenhum para um, ou de um para dois ou mais, reflete um aumento de 9.45 na nota geral, considerando todas as outras variáveis constantes.
+        - O aumento de uma unidade na renda_familiar_mensal, ou seja, de nenhuma renda para renda baixa, por exemplo, reflete um aumento de mais de 16 pontos na nota geral, considerando todas as outras variáveis constantes.
     - A variável escola_publica apresenta uma correlação negativa com a nota. Uma vez que esta representa uma variável dummy, indicando 1 caso o candidato seja aluno de escola pública, ou 0, caso não. A interpretação pode ser feita da seguinte forma:
         - Caso o estudante seja aluno de escola pública, a sua nota reduz em 10.2 pontos, considerando todas as outras variáveis constantes.
 
