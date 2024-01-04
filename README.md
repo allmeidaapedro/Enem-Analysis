@@ -39,7 +39,7 @@
     - Como a renda influencia o desempenho do candidato?
     - Como a escolaridade do pai e da mãe influenciam o desempenho do candidato?
     - De que forma a falta de acesso a internet e/ou computador em casa impactam o desempenho do candidato?
-- [Clique aqui para acessar as análises](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
+- [Clique aqui para acessar a análise de desempenho](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
 # 3.1 Principais insights - Análise de desempenho
 - A nota média geral no enem de 2022 é aproximadamente 543. 
@@ -76,7 +76,7 @@
     - Existe alguma diferença na taxa de abstenção entre as diferentes faixas etárias?
     - Existe alguma diferença na taxa de abstenção entre pessoas do sexo masculino e do sexo feminino?
     - Quais regiões apresentam as maiores e as menores taxas de abstenção?
-- [Clique aqui para acessar as análises](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
+- [Clique aqui para acessar a análise de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
 # 4.1 Principais insights - Análise de abstenção
 - Ambos os dias de prova apresentam altas taxas de abstenção. Para o primeiro dia (provas de linguagens e ciências humanas) temos uma taxa de aproximadamente 28%, contra 32% para o segundo dia (ciências da natureza e matemática). Isso é preocupante, principalmente porque a enorme maioria dessas ausências não se devem a razões randômicas, mas sim por falta de preparo/confiança do candidato para realizar a prova. O governo deve trabalhar para mitigar essa problemática.
