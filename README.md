@@ -65,6 +65,7 @@
 
 # 4. Análise de abstenção
 - O objetivo dessa análise consiste em identificar os principais fatores que influenciam a ausência do candidato na prova. Além disso, observar como esses fatores se relacionam com a ausência e como podem ser utilizados para a predição da probabilidade de abstenção do estudante.
+- Para essa análise, foi utilizado todo o conjunto de dados. Dessa forma, incluimos não só os estudantes que compareceram, mas também aqueles que faltaram ao exame, os quais são o nosso alvo.
 - Principais perguntas respondidas na Análise de Abstenção:
     - A falta de acesso a internet e/ou computador em casa influenciam a abstenção do candidato na prova?
     - A escolaridade do pai e da mãe influenciam a abstenção do candidato na prova?
@@ -190,8 +191,7 @@
     - O meu objetivo com isso foi seguir ao máximo um workflow real de um projeto de ciência de dados, construindo meu projeto inteiro como um pacote reprodutível.
     - Entre os próximos passos, está o deploy em alguma cloud, como a aws.
 
-
-<img src="reports/predicao_nota.png">
+![1704339115046](image/README/1704339115046.png)
 
 ![1704338734527](image/README/1704338734527.png)
 
