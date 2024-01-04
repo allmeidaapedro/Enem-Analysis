@@ -111,7 +111,7 @@
 
 <img src="reports/actual_predicted.png">
 
-# 5.1 Interpretação dos resultados do modelo - Desempenho
+# 5.1 Interpretação dos coeficientes da Regressão Lasso
 - Os coeficientes foram interpretados e, como eu suspeitava, algumas variáveis eram irrelevantes, ficando com coeficiente 0. Uma delas foi a variável sexo, o que fez total sentido pois durante a eda foi visto que a distribuição das notas era similar para ambos os sexos. Além disso, algumas das variáveis mais importantes foram:
     - lingua, status_conclusao_ensino_medio, renda_familiar_mensal, escola_publica, possui_computador_em_casa, escola_privada e escolaridade_mae.
     - Isso faz sentido, uma vez que vimos na eda que:
@@ -155,7 +155,7 @@
 
 <img src="reports/faixas_score_ausentes.png">
 
-# 6.1 Interpretação dos resultados do modelo - Abstenção
+# 6.1 Interpretação dos coeficientes da Regressão Logística
 - Os coeficientes foram interpretados e algumas das variáveis mais importantes foram: escola_privada, treineiro, nao_respondeu_escola, faixa_etaria, renda_familiar_mensal.
     - Isso faz sentido, uma vez que vimos na eda que:
         - A taxa de abstenção de alunos de escola pública era mais de quatro vezes maior que a de alunos de escola privada.
