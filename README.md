@@ -5,6 +5,29 @@
 </p>
 
 # 1. Descrição e objetivos
+- Este é um <b>projeto de ciência de dados de ponta a ponta (da coleta de dados até o deploy)</b> em que é realizada a <b>limpeza, análise exploratória e modelagem dos microdados do enem 2022 (dados públicos reais).</b>
+- A <b>limpeza</b> foi fundamental, dado que o conjunto original dos microdados tem mais de 2 GB de tamanho, tornando a manipulação, análise e modelagem dos dados inviável.
+- A <b>análise e modelagem</b> se dividem em duas <b>abordagens:</b>
+    - <b>Análise e modelagem de desempenho:</b> O <b>objetivo</b> dessa análise consiste em identificar as principais variáveis que impactam a nota do candidato, como elas se relacionam com o desempenho dele e como elas podem ser utilizadas para a predição dessa nota.
+    - <b>Análise e modelagem de abstenção:</b> O <b>objetivo</b> dessa análise consiste em identificar os principais fatores que influenciam a ausência do candidato na prova. Além disso, observar como esses fatores se relacionam com a ausência e como eles podem ser utilizados para a predição da probabilidade de abstenção do estudante.
+- Tais análises podem servir para interesses educacionais. O governo poderia utilizá-las para, por exemplo:
+    - A partir do conhecimento dos fatores que mais influenciam a abstenção do candidato e das probabilidades de ausência preditas, determinar intervenções preventivas, aprimoramento da comunicação e planejamento estratégico de forma a mitigar essa alta taxa de abstenção em pontos de foco e, consequentemente, melhorar a qualidade do exame e da educação do país.
+    - A partir do conhecimento dos fatores que mais impactam a nota do candidato e dos valores preditos para ela, identificar talentos potenciais (perfis de alunos que tendem a performar excepcionalmente no enem) e necessidades individuais (perfis de alunos que tendem a performar mal no enem), avaliar o desempenho educacional e realizar um planejamento estratégico para assistir àqueles menos capacitados. Consequentemente, isso melhoraria a qualidade do exame e da educação do país.
+- Finalmente, foram desenvolvidos duas <b>APIs Flask</b> para <b>deploy</b> do modelo de ambas as análises supracitadas. Dessa forma, é possível prever a nota ou a probabilidade de abstenção de um candidato fornecendo dados educacionais e socioeconômicos sobre ele.
+- Cada análise e modelagem realizada é abordada com mais detalhes nos próximos tópicos.
+
+# 2. Limpeza de dados
+- A <b>limpeza</b> foi fundamental, dado que o conjunto original dos microdados tem mais de 2 GB de tamanho, tornando a manipulação, análise e modelagem dos dados inviável. Nessa etapa, foram realizadas as seguintes <b>tarefas:</b>
+    - Identificação e tratamento de valores nulos e duplicados, de acordo com os objetivos da análise.
+    - Remoção de variáveis irrelevantes para a análise.
+    - Feature engineering: Criação e alteração de variáveis existentes. Fusão, remoção e renomeação de categorias com base na melhor formatação para os objetivos propostos. Além disso, conversão colunas para o tipo de dado correto.
+    - Otimização de memória: Conversão de variáveis a tipos de dados menores, a fim de melhorar a performance, possibilitando a leitura e manipulação dos dados em menor tempo, sem que haja a perda de informação. Colunas 'object' foram convertidas a 'category', colunas 'float64' foram convertidas a 'float32' e colunas 'int64' foram convertidas a 'int8'.
+    - Tudo foi salvo em um arquivo parquet, de forma a agilizar a leitura e manter os tipos convertidos do tópico acima.
+- Como <b>resultado da limpeza</b>, foi possível reduzir o tamanho do dataset de +2 GB para +221.7 MB, quase 10%!
+
+![1704334204458](image/README/1704334204458.png)
+
+- 2. Limpeza de dados, 3. Análise de Abstenção, 4. Análise de desempenho, 5. Insights Abstenção, 6. Insights Desempenho, 7. Modelagem abstenção, 8. Resultados abstenção. 9. Modelagem desempenho. 10. Resultados desempenho. 11. Deploy e próximos passos. 12. Execute na sua máquina
 
 - Este é um <b>projeto de ciência de dados de ponta a ponta (da coleta de dados até o deploy)</b> em que é realizada a <b>limpeza, análise exploratória e modelagem dos microdados do enem 2022 (dados públicos reais).</b>
 
