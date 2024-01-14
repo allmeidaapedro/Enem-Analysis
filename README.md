@@ -33,6 +33,7 @@
 - O objetivo dessa análise consiste em identificar as principais variáveis que impactam a nota do candidato, como elas se relacionam com o desempenho dele e como podem ser utilizadas para a predição dessa nota.
 - Uma observação importante é que, dado que alunos ausentes ficam com nota nula, a amostra selecionada para essa análise consiste apenas de candidatos que compareceram em ambos os dias do enem. Introduzir ausentes incluiria assimetrias e distorções no estudo em questão.
 - Perguntas respondidas na Análise de Desempenho:
+    - Em quais áreas do conhecimento os candidatos performam melhor ou pior?
     - Quem apresenta melhor desempenho, pessoas do sexo masculino ou feminino?
     - Existem diferenças no desempenho para pessoas de diferentes faixas etárias?
     - Em média, quais os estados com as maiores e as menores notas?
@@ -70,6 +71,7 @@
 - O objetivo dessa análise consiste em identificar os principais fatores que influenciam a ausência do candidato na prova. Além disso, observar como esses fatores se relacionam com a ausência e como podem ser utilizados para a predição da probabilidade de abstenção do estudante.
 - Para essa análise, foi utilizado todo o conjunto de dados. Dessa forma, incluimos não só os estudantes que compareceram, mas também aqueles que faltaram ao exame, os quais são o nosso alvo.
 - Principais perguntas respondidas na Análise de Abstenção:
+    - Em qual dos dias de prova há uma maior taxa de abstenção. E qual a taxa total?
     - A falta de acesso a internet e/ou computador em casa influenciam a abstenção do candidato na prova?
     - A escolaridade do pai e da mãe influenciam a abstenção do candidato na prova?
     - A renda familiar mensal influencia a abstenção do candidato na prova?
