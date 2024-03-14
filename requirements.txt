@@ -8,4 +8,4 @@ optuna==3.5.0
 category-encoders==2.6.3
 lightgbm==4.2.0
 Flask==2.3.3
--e .
+#-e .
