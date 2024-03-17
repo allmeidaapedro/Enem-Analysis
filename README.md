@@ -52,12 +52,18 @@
 - Surpreendentemente, 42.16% dos candidatos não possuem computador em casa. Esse dado nos revela uma dificuldade e disparidade de condições dos estudantes, já que um computador com acesso a internet é a melhor ferramenta para estudos atualmente.
 - 91.96% dos candidatos possuem acesso a internet em casa. Embora seja um baixo percentual, ainda é alarmante o fato de que aproximadamente 8% dos estudantes não possuem sequer internet para se preparar. Considerando um exame desse porte, isso representa um grande número de pessoas.
 
-<img src="reports/dist_pc_net.png">
+<img src="reports/dist_pc.png">
+
+<img src="reports/dist_net.png">
+
 
 - Candidatos com um ou mais computadores em casa tendem a obter uma nota geral maior que aqueles que não possuem o dispositivo.
 - Candidatos com acesso a internet em casa tendem a obter uma nota geral maior que aqueles que não possuem o recurso.
 
-<img src="reports/nota_pc_net.png">
+<img src="reports/nota_pc.png">
+
+<img src="reports/nota_net.png">
+
 
 - Claramente, quanto maior a escolaridade do pai ou da mãe, melhor o desempenho do candidato.
 
@@ -72,9 +78,9 @@
 - Para essa análise, foi utilizado todo o conjunto de dados. Dessa forma, incluimos não só os estudantes que compareceram, mas também aqueles que faltaram ao exame, os quais são o nosso alvo.
 - Principais perguntas respondidas na Análise de Abstenção:
     - Em qual dos dias de prova há uma maior taxa de abstenção. E qual a taxa total?
-    - A falta de acesso a internet e/ou computador em casa influenciam a abstenção do candidato na prova?
-    - A escolaridade do pai e da mãe influenciam a abstenção do candidato na prova?
-    - A renda familiar mensal influencia a abstenção do candidato na prova?
+    - A falta de acesso a recursos tecnológicos (celular, computador e internet) em casa influenciam a ausência do candidato na prova?
+    - A escolaridade do pai e da mãe influenciam a ausência do candidato na prova?
+    - A renda familiar mensal influencia a ausência do candidato na prova?
     - Existe alguma diferença na taxa de abstenção entre as diferentes faixas etárias?
     - Existe alguma diferença na taxa de abstenção entre pessoas do sexo masculino e do sexo feminino?
     - Quais regiões apresentam as maiores e as menores taxas de abstenção?
@@ -83,19 +89,22 @@
 # 4.1 Principais insights - Análise de abstenção
 - Ambos os dias de prova apresentam altas taxas de abstenção. Para o primeiro dia (provas de linguagens e ciências humanas) temos uma taxa de aproximadamente 28%, contra 32% para o segundo dia (ciências da natureza e matemática). Isso é preocupante, principalmente porque a enorme maioria dessas ausências não se devem a razões randômicas, mas sim por falta de preparo/confiança do candidato para realizar a prova. O governo deve trabalhar para mitigar essa problemática.
 
-<img src="reports/dist_presenca.png">
+<img src="reports/dist_presenca_lcch.png">
 
-- A escolaridade do pai e/ou da mãe influenciam o comparecimento do candidato na prova. Claramente, à medida que o nível de escolaridade aumenta, a taxa de abstenção cai. Por exemplo, analisando a escolaridade da mãe, é possível perceber que a taxa de abstenção entre candidatos cujas mães nunca estudaram é o dobro da taxa para aqueles cujas mães possuem pós graduação.
+<img src="reports/dist_presenca_mtcn.png">
 
-<img src="reports/comparecimento_escolaridade.png">
 
-- A renda familiar mensal influencia o comparecimento do candidato na prova. Claramente, à medida que a renda aumenta, a taxa de abstenção cai. Por exemplo, a taxa de abstenção entre candidatos que não possuem nenhuma renda é mais que o dobro da taxa entre aqueles que possuem rendas maiores que 7 mil reais.
+- A escolaridade do pai e/ou da mãe influenciam a ausência do candidato na prova. Claramente, à medida que o nível de escolaridade aumenta, a taxa de abstenção cai. Por exemplo, analisando a escolaridade da mãe, é possível perceber que a proporção de ausentes entre candidatos cujas mães nunca estudaram é o dobro da taxa para aqueles cujas mães possuem pós graduação.
 
-<img src="reports/comparecimento_renda.png">
+<img src="reports/abstencao_escolaridade.png">
+
+- A renda familiar mensal influencia a ausência do candidato na prova. Claramente, à medida que a renda aumenta, a taxa de abstenção cai. Por exemplo, a proporção de ausentes entre candidatos que não possuem nenhuma renda é mais que o dobro da taxa entre aqueles que possuem rendas maiores que 7 mil reais.
+
+<img src="reports/abstencao_renda.png">
 
 - Jovens tendem a ter uma taxa de abstenção menor que a de pessoas adultas a idosas.
 
-<img src="reports/comparecimento_faixa_etaria.png">
+<img src="reports/abstencao_faixa_etaria.png">
 
 # 5. Modelagem de desempenho
 - Para a predição da nota de um candidato (tarefa de regressão, aprendizado supervisionado com dados rotulados), foi utilizado um modelo de Regressão Lasso, dado o seu rápido treinamento e predição, alta interpretabilidade através dos coeficientes, regularização utilizando a penalidade l1 e seleção automática de variáveis, reduzindo os pesos de características irrelevantes a zero, gerando um modelo esparso. Além disso, foi percebida uma certa relação linear das features com o target durante a análise. Por exemplo, quanto maior era a escolaridade da mãe do candidato, maior era o desempenho, de forma monotônica. Esse fator, juntamente à ausência de multicolinearidade favoreceu a escolha de tal modelo linear.
