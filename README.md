@@ -39,13 +39,16 @@
     - Em média, quais os estados com as maiores e as menores notas?
     - Como a renda influencia o desempenho do candidato?
     - Como a escolaridade do pai e da mãe influenciam o desempenho do candidato?
-    - De que forma a falta de acesso a internet e/ou computador em casa impactam o desempenho do candidato?
+    - De que forma a falta de acesso a recursos tecnológicos (celular, computador e internet) em casa impactam o desempenho do candidato?
+    - De que forma o tipo de escola (pública ou privada) influencia o desempenho do candidato?
 - [Clique aqui para acessar a análise de desempenho](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
 # 3.1 Principais insights - Análise de desempenho
 - A nota média geral no enem de 2022 é aproximadamente 543. 
 - A nota média máxima no ENEM de 2022 é aproximadamente 856.
 - Ciências da natureza é a área do conhecimento com o pior desempenho. A nota média é aproximadamente 496. Além disso, analisando os percentis, metade dos candidatos obtém uma nota de até 486 nessa prova. Esse resultado é bem baixo, principalmente se comparado com a área do conhecimento com o melhor desempenho, matemática. A nota média nela é aproximadamente 543. Uma observação importante é que esse indicador em matemática pode enganar. Apesar de ter a maior nota média, isso se deve ao modelo do enem, que naturalmente atribui mais pontos para essa prova.
+
+<img src="reports/hist_nota_geral.png">
 
 <img src="reports/dist_notas_obj.png">
 
@@ -73,6 +76,11 @@
 
 <img src="reports/nota_renda.png">
 
+- Em média, alunos de escola privada obtêm uma nota média 90 pontos acima que a de alunos de escola pública.
+
+<img src="reports/nota_escola.png">
+
+
 # 4. Análise de abstenção
 - O objetivo dessa análise consiste em identificar os principais fatores que influenciam a ausência do candidato na prova. Além disso, observar como esses fatores se relacionam com a ausência e como podem ser utilizados para a predição da probabilidade de abstenção do estudante.
 - Para essa análise, foi utilizado todo o conjunto de dados. Dessa forma, incluimos não só os estudantes que compareceram, mas também aqueles que faltaram ao exame, os quais são o nosso alvo.
@@ -83,6 +91,7 @@
     - A renda familiar mensal influencia a ausência do candidato na prova?
     - Existe alguma diferença na taxa de abstenção entre as diferentes faixas etárias?
     - Existe alguma diferença na taxa de abstenção entre pessoas do sexo masculino e do sexo feminino?
+    - Existe alguma diferença na taxa de abstenção entre alunos de escola pública e privada?
     - Quais regiões apresentam as maiores e as menores taxas de abstenção?
 - [Clique aqui para acessar a análise de abstenção](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
@@ -102,9 +111,10 @@
 
 <img src="reports/abstencao_renda.png">
 
-- Jovens tendem a ter uma taxa de abstenção menor que a de pessoas adultas a idosas.
+- A taxa de abstenção para alunos de escola pública é 4.4 vezes maior que a de alunos de escola privada.
 
-<img src="reports/abstencao_faixa_etaria.png">
+<img src="reports/abstencao_escola.png">
+
 
 # 5. Modelagem de desempenho
 - Para a predição da nota de um candidato (tarefa de regressão, aprendizado supervisionado com dados rotulados), foi utilizado um modelo de Regressão Lasso, dado o seu rápido treinamento e predição, alta interpretabilidade através dos coeficientes, regularização utilizando a penalidade l1 e seleção automática de variáveis, reduzindo os pesos de características irrelevantes a zero, gerando um modelo esparso. Além disso, foi percebida uma certa relação linear das features com o target durante a análise. Por exemplo, quanto maior era a escolaridade da mãe do candidato, maior era o desempenho, de forma monotônica. Esse fator, juntamente à ausência de multicolinearidade favoreceu a escolha de tal modelo linear.

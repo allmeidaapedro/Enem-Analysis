@@ -196,7 +196,7 @@ def bar_plot(data, x, height, title, xlabel, labelpad=15,
             if mean:
                 for bar in bars:
                     height = bar.get_height()
-                    ax.annotate(''.format(round(height)), 
+                    ax.annotate(round(height), 
                                 xy=(bar.get_x() + bar.get_width() / 2, height),
                                 xytext=(0, -10),  
                                 textcoords="offset points",
