@@ -41,6 +41,7 @@
     - Como a escolaridade do pai e da mãe influenciam o desempenho do candidato?
     - De que forma a falta de acesso a recursos tecnológicos (celular, computador e internet) em casa impactam o desempenho do candidato?
     - De que forma o tipo de escola (pública ou privada) influencia o desempenho do candidato?
+    - Existe alguma correlação entre o número de pessoas em casa e a nota geral do candidato?
 - [Clique aqui para acessar a análise de desempenho](https://github.com/allmeidaapedro/Enem-Analysis/blob/main/notebooks/2_eda.ipynb)
 
 # 3.1 Principais insights - Análise de desempenho
